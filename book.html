@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./book.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./my-portfolio.css">
+    <link rel="website icon" type="jpeg"
+        href="https://vistak.co/wp-content/uploads/elementor/thumbs/Mask-group-2023-01-05T190619.602-78prqkfjr2p9lghzmxnl3zlzvs04odujirol7dmcjvk.png">
+    <style>
+    
+        /* Body and page design */
+        body {
+            font-family: Arial, sans-serif;
+            background: url(img1.jpg);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        header{
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 10%;
+    /* position:fixed; */
+    z-index:100000;
+    top:0;
+    left:0;
+    border-bottom:1px solid transparent;
+    background: url("img1.jpg") no-repeat;
+}
+
+header.sticky{
+    background: url("img1.jpg") no-repeat;
+    border-bottom:1px solid var(--hover-color);
+    padding:12px 10%
+}
+
+.the_logo{
+    width:100px
+}
+.logo{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing: 1px
+}
+
+span{
+    color:var(--hover-color)
+}
+
+.navlist{
+    display:flex;
+}
+
+.navlist a{
+    display:inline-block;
+    color:var(--text-color);
+    font-weight:500;
+    padding:10px 20px;
+    animation: slideAnimation 1s ease forwards;
+    animation-delay:calc(.3s*var(--i));
+    opacity:0
+}
+
+.navlist a:hover{
+    color:var(--hover-color);
+    text-shadow:0 0 10px rgba(18,247,255,0.6),
+    0 0 20px rgba(18,247,255,0.6),
+    0 0 30px rgba(18,247,255,0.6),
+    0 0 40px rgba(18,247,255,0.6),
+    0 0 70px rgba(18,247,255,0.6),
+    0 0 80px rgba(18,247,255,0.6),
+    0 0 100px rgba(18,247,255,0.6),
+    0 0 150px rgba(18,247,255,0.6);
+}
+
+
+.navlist a.active{
+    color:var(--hover-color)
+}
+
+#menu-icon{
+    font-size: 1.8rem;
+    z-index: 10001;
+    cursor: pointer;
+    margin-left:25px;
+    background: var(--hover-color);
+    border-radius: 3px;
+    color:var(--secon-color);
+    display: none;
+}
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            top:100px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        select {
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2575fc;
+        }
+
+        .btn-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        #confirmationMessage {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        #roundTripDate {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Navigation bar (menu) */
+        .navlist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navlist li {
+            margin: 0 15px;
+        }
+
+        .navlist a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navlist a:hover {
+            color: #6a11cb;
+        }
+
+        #menu-icon {
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navlist {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navlist.open {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img class="the_logo"
+                src="https://vistak.co/wp-content/uploads/elementor/thumbs/Mask-group-2023-01-05T190619.602-78prqkfjr2p9lghzmxnl3zlzvs04odujirol7dmcjvk.png">
+        </div>
+        <ul class="navlist">
+            <li><a href="index.html" style="--i:1">Home</a></li>
+            <li><a href="about.html" style="--i:2">About</a></li>
+            <li><a href="service.html" style="--i:3">Services</a></li>
+            <li><a href="prtfolio.html" style="--i:5">Portfolio</a></li>
+            <li><a href="contact.html" style="--i:6">Contact</a></li>
+            <li><a href="login.html" style="--i:6">Log In</a></li>
+        </ul>
+        <div id="menu-icon" class="bx bx-menu"></div>
+    </header>
+
+    <div class="container">
+        <h1>Book Now</h1>
+        <form id="bookingForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="183028e2-8148-4be7-989e-8bcbc495ce67">
+
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="paris">Paris</option>
+                <option value="london">London</option>
+                <option value="newyork">New York</option>
+                <option value="tokyo">Tokyo</option>
+            </select>
+
+            <label for="trip">Trip:</label>
+            <select id="trip" name="trip" required>
+                <option value="one-way">One Way</option>
+                <option value="round-trip">Round Trip</option>
+            </select>
+
+            <label for="date">Departure Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <div id="roundTripDate">
+                <label for="return-date">Return Date:</label>
+                <input type="date" id="return-date" name="return-date">
+            </div>
+            <label for="numPassengers">Number of Passengers:</label>
+            <input type="number" id="numPassengers" name="numPassengers" min="1" max="10" required>
+
+            <div class="btn-box">
+                <input type="submit" class="btn">
+            </div>
+        </form>
+
+        <div id="confirmationMessage"></div>
+    </div>
+
+    <script>
+             let menuIcon =  document.querySelector("#menu-icon");
+let navList = document.querySelector(".navlist");
+
+menuIcon.onclick = () =>{
+    menuIcon.classList.toggle("bx-x")
+    navList.classList.toggle("open")
+}
+
+window.onscroll = () =>{
+    menuIcon.classList.remove("bx-x")
+    navList.classList.remove("open")
+}
+
+        // Show/Hide return date based on trip type
+        document.getElementById('trip').addEventListener('change', function () {
+            const roundTripDate = document.getElementById('roundTripDate');
+            if (this.value === 'round-trip') {
+                roundTripDate.style.display = 'block';
+            } else {
+                roundTripDate.style.display = 'none';
+            }
+        });
+
+        // // Form submission and confirmation message
+        // document.getElementById("bookingForm").addEventListener("submit", function (event) {
+        //     event.preventDefault(); // Prevent default form submission
+
+        //     const first_name = document.getElementById("first-name").value;
+        //     const last_name = document.getElementById("last-name").value;
+        //     const email = document.getElementById("email").value;
+        //     const destination = document.getElementById("destination").value;
+        //     const date = document.getElementById("date").value;
+        //     const numPassengers = document.getElementById("numPassengers").value;
+        //     const returnDate = document.getElementById("return-date").value;
+
+        //     // Display confirmation message
+        //     document.getElementById("confirmationMessage").innerHTML = `
+        //         <strong>Booking Confirmation:</strong><br>
+        //         First Name: ${first_name}<br>
+        //         Last Name: ${last_name}<br>
+        //         Email: ${email}<br>
+        //         Destination: ${destination}<br>
+        //         Departure Date: ${date}<br>
+        //         Number of Passengers: ${numPassengers}<br>
+        //         ${returnDate ? `Return Date: ${returnDate}<br>` : ''}
+        //         <button type="submit" > i confirm </button>
+        //         `;
+        // });
+    </script>
+
+</body>
+
+</html>

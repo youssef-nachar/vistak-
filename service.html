@@ -9,11 +9,123 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="website icon" type="jpeg"
         href="https://vistak.co/wp-content/uploads/elementor/thumbs/Mask-group-2023-01-05T190619.602-78prqkfjr2p9lghzmxnl3zlzvs04odujirol7dmcjvk.png">
+        <style>
+            /* Basic Reset for Modal */
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: 'Arial', sans-serif;
+                height: 100%;
+            }
+        
+            /* Modal Overlay */
+           /* Modal Overlay */
+.modal {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    z-index: 9999;  /* Make sure modal is above everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade in/out */
+}
 
-</head>
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-out;
+    position: relative;  /* Make sure the close icon is on top of the modal */
+    z-index: 10000;  /* Ensure modal content is above the overlay */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10001; /* Make sure close button is above the content */
+}
+
+.close:hover {
+    color: #333;
+}
+
+        
+            /* Modal Title */
+            #modalTitle {
+                font-size: 28px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 20px;
+            }
+        
+            /* Modal Description */
+            #modalDescription {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 30px;
+                line-height: 1.5;
+                text-align: justify;
+            }
+        
+            /* Button Box */
+            .btn-box {
+                text-align: center;
+            }
+        
+            /* Book Now Button */
+            .btn {
+                background-color: #007BFF;
+                color: white;
+                padding: 12px 25px;
+                border: none;
+                border-radius: 30px;
+                font-size: 18px;
+                text-decoration: none;
+                transition: background-color 0.3s, transform 0.3s;
+                display: inline-block;
+            }
+        
+            .btn:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);  /* Slight zoom effect */
+            }
+        
+            /* Close Button */
+            .close:hover {
+                color: #333;
+            }
+        
+            /* Animation for Modal */
+            @keyframes slideIn {
+                from {
+                    transform: translateY(-30px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        </style>
+        
+
+    </head>
 
 <body>
-
 
     <header>
         <div class="logo"><img class="the_logo"
@@ -27,8 +139,6 @@
             <li><a href="contact.html" style="--i:6">Contact</a></li>
             <li><a href="login.html" style="--i:6">log in</a></li>
             <li><a href ="./book.html">Book now</a></li>
-
-
         </ul>
         <div id="menu-icon" class="bx bx-menu"></div>
     </header>
@@ -43,75 +153,87 @@
                 <i id="the_services" class='bx bxs-plane-alt'></i>
                 <h3>tourism</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('tourism')">Read More</a>
                 </div>
             </div>
             <div class="service-box" style="background:url('img9.jpg') no-repeat; background-size:100%">
                 <i id="the_services" class='bx bxs-plane-land'></i>
                 <h3>shipping</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('shipping')">Read More</a>
                 </div>
             </div>
             <div class="service-box" style="background:url('img9.jpg') no-repeat; background-size:100%">
                 <i id="the_services" class='bx bxs-planet'></i>
                 <h3>travel visa</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('travel visa')">Read More</a>
                 </div>
             </div>
             <div class="service-box" style="background:url('img9.jpg') no-repeat; background-size:100%">
                 <i id="the_services" class='bx bxs-plane'></i>
                 <h3>immigration</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('immigration')">Read More</a>
                 </div>
             </div>
             <div class="service-box" style="background:url('img9.png') no-repeat; background-size:100%">
                 <i id="the_services" class='bx bxs-leaf'></i>
-                <h3>investement</h3>
+                <h3>investment</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('investment')">Read More</a>
                 </div>
             </div>
             <div class="service-box" style="background:url('img9.png') no-repeat; background-size:100%">
                 <i id="the_services" class='bx bxs-book'></i>
                 <h3>study</h3>
                 <div class="btn-box service-btn">
-                    <a href="#" class="btn">Read More</a>
+                    <a href="#" class="btn" onclick="showServiceInfo('study')">Read More</a>
                 </div>
             </div>
-
         </div>
+
         <div class="btn-box service-btn">
             <button class="to-right" onclick="youssef()"><i class='bx bxs-hand-right'></i></button>
         </div>
         <button class="to-left" onclick="scrollRight()"><i class='bx bxs-hand-left'></i></button>
-
     </section>
+
+    <!-- Modal for service information -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Service Title</h2>
+            <p id="modalDescription">Service description goes here.</p>
+            <div class="btn-box">
+                <a href="./contact.html" class="btn">contact us</a>
+            </div>
+        </div>
+    </div>
+
     <section class="section-service-image">
         <div class="main-text">
             <h2>Paper Your Application</h1>
         </div>
         <img class="service-image" src="https://vistak.co/wp-content/uploads/2023/02/Picture2-1.png" alt="">
     </section>
+
     <footer>
         <p class="scrol-scale">Copyright &copy; 2024 by ParseCoder || All Right Reserved</p>
     </footer>
+
     <script src="./mixitup.min.js"></script>
 
     <script>
         function scrollRight() {
             const container = document.getElementById('section-services');
-            container.scrollLeft -= 200;  // Scrolls right by 100px
+            container.scrollLeft -= 400;  // Scrolls right by 100px
         }
 
         function youssef() {
             const container = document.getElementById('section-services');
             container.scrollLeft += 200;  // Scrolls .left by 100px
         }
-
-
 
         let menuIcon = document.querySelector("#menu-icon");
         let navList = document.querySelector(".navlist");
@@ -125,7 +247,58 @@
             menuIcon.classList.remove("bx-x")
             navList.classList.remove("open")
         }
+
+        // Function to show service details in the modal
+        function showServiceInfo(service) {
+            let title = '';
+            let description = '';
+
+            // Define service details
+            switch(service) {
+                case 'tourism':
+                    title = 'Tourism';
+                    description = 'Our tourism services provide exceptional travel experiences to various dream destinations worldwide. Whether you are looking for a peaceful beach vacation or an adventurous mountain trek, we have the perfect package for you.';
+                    break;
+                case 'shipping':
+                    title = 'Shipping';
+                    description = 'We offer fast and reliable shipping services globally. Our shipping solutions ensure that your packages are delivered safely and on time, with the best rates and tracking options.';
+                    break;
+                case 'travel visa':
+                    title = 'Travel Visa';
+                    description = 'Our visa services cover all types of travel, from tourism and business to medical and educational purposes. We guide you through the application process, ensuring quick and hassle-free approvals.';
+                    break;
+                case 'immigration':
+                    title = 'Immigration';
+                    description = 'We provide comprehensive immigration services for individuals and families looking to move abroad. Our team assists with visa applications, legal documentation, and all aspects of settling in a new country.';
+                    break;
+                case 'investment':
+                    title = 'Investment';
+                    description = 'We offer a wide range of investment opportunities, from real estate to startups. Our team helps you make informed decisions to grow your wealth and secure a prosperous future.';
+                    break;
+                case 'study':
+                    title = 'Study Abroad';
+                    description = 'We assist students in their journey to study abroad. From selecting the right course and university to assisting with visa applications, we guide you every step of the way.';
+                    break;
+                default:
+                    title = 'Service';
+                    description = 'Details about this service are coming soon.';
+            }
+
+            // Set modal content
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+
+            // Show the modal
+            document.getElementById('serviceModal').style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
     </script>
+
+ 
 </body>
 
 </html>

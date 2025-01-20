@@ -30,6 +30,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
     transition: opacity 0.3s ease-in-out; /* Smooth fade in/out */
+    background-color: black;
 }
 
 /* Modal Content */
@@ -44,6 +45,7 @@
     animation: slideIn 0.5s ease-out;
     position: relative;  /* Make sure the close icon is on top of the modal */
     z-index: 10000;  /* Ensure modal content is above the overlay */
+    background-color: wheat;
 }
 
 /* Close Button */
@@ -119,6 +121,13 @@
                     transform: translateY(0);
                     opacity: 1;
                 }
+            }
+            @media(max-width:760px){
+                .modal-content{
+                    margin-top: 100px;
+                }
+
+                
             }
         </style>
         
